@@ -8,8 +8,10 @@ using BehaviorDesigner.Runtime.Tasks;
 public class MyCanSeeObject : Conditional
 {
     public Transform[] targets; //要寻找的敌人
-    public float fieldOfView = 90;
-    public float fieldViewDistance = 7f;
+    //public float fieldOfView = 90;
+    public SharedFloat sharedFieldOfView = 90;
+    //public float fieldViewDistance = 7f;
+    public SharedFloat sharedFieldViewDistance = 7f;
     public SharedTransform target;
 
     public override TaskStatus OnUpdate()
@@ -26,7 +28,7 @@ public class MyCanSeeObject : Conditional
             // 距离
             float distance = (_target.position - transform.position).magnitude;
 
-            if (distance < fieldViewDistance && angle < fieldOfView)
+            if (distance < sharedFieldViewDistance.Value && angle < sharedFieldOfView.Value)
             {
                 this.target.Value = _target;
                 return TaskStatus.Success;

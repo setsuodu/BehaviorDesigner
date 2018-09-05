@@ -3,6 +3,7 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/[Pp]ackages/
 /Assets/AssetStoreTools*
 /.vs/
 /Assets/Behavior Designer/

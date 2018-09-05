@@ -7,7 +7,8 @@ using BehaviorDesigner.Runtime.Tasks;
 // 这个任务脚本的作用，是控制游戏物体到达指定目标位置
 public class MySeek : Action
 {
-    public float speed;
+    //public float speed = 10;
+    public SharedFloat sharedSpeed;
     public SharedTransform target;
     public float arriveDistance = 0.1f;
     private float sqrArriveDistance;
@@ -27,7 +28,7 @@ public class MySeek : Action
         }
 
         transform.LookAt(target.Value.position);
-        transform.position = Vector3.MoveTowards(transform.position, target.Value.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.Value.position, sharedSpeed.Value * Time.deltaTime);
 
         if ((transform.position - target.Value.position).sqrMagnitude < sqrArriveDistance)
         {
