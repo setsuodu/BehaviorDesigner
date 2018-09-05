@@ -14,6 +14,10 @@ public class Flag : MonoBehaviour
             {
                 other.GetComponent<Offense>().hasFlag = false;
             }
+            else
+            {
+                CTFGameManager.Instance.TakeFlag();
+            }
 
             other.GetComponent<Offense>().hasFlag = true;
             transform.SetParent(other.transform);
