@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flag : MonoBehaviour
 {
-    private Offense owner;
+    public Offense owner;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -12,16 +12,16 @@ public class Flag : MonoBehaviour
         {
             if (owner != null)
             {
-                other.GetComponent<Offense>().hasFlag = false;
+                owner.hasFlag = false;
             }
             else
             {
+                // 当前没有任何拥有者
                 CTFGameManager.Instance.TakeFlag();
             }
 
             other.GetComponent<Offense>().hasFlag = true;
             transform.SetParent(other.transform);
-
             owner = other.GetComponent<Offense>();
         }
     }
